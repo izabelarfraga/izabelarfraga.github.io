@@ -2,82 +2,102 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Izabela Fraga Reis | Data & Business Analyst</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* Estilos base para replicar o layout de ChatGPT Image 30 de jun. de 2026, 14_51_43.jpg */
-        body { background-color: #0c1117; color: #e6edf3; font-family: sans-serif; margin: 0; padding: 20px; }
-        .header { border-bottom: 1px solid #30363d; padding-bottom: 20px; margin-bottom: 20px; }
-        .main-grid { display: grid; grid-template-columns: 1fr 300px; gap: 20px; max-width: 1200px; margin: auto; }
-        .section-title { color: #58a6ff; font-size: 0.9em; margin-bottom: 15px; display: flex; align-items: center; }
-        .card { background: #0d1117; border: 1px solid #30363d; padding: 20px; border-radius: 8px; }
-        
-        /* Layout de colunas para Tech Stack */
-        .tech-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-        
-        /* Layout de Projetos */
-        .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
-        
-        /* Sidebar e perfil */
-        .profile-img { width: 120px; border-radius: 50%; display: block; margin: 0 auto 15px; }
-        .sidebar-item { margin-bottom: 15px; font-size: 0.9em; }
+        :root {
+            --bg: #0b1117;
+            --panel: #151c24;
+            --accent: #45b7af;
+            --text: #ffffff;
+            --border: #2d3640;
+        }
+
+        body { 
+            background-color: var(--bg); color: var(--text); 
+            font-family: 'Segoe UI', Roboto, sans-serif; 
+            margin: 0; padding: 30px; display: flex; justify-content: center;
+        }
+
+        .dashboard { 
+            display: grid; grid-template-columns: 1fr 350px; 
+            gap: 25px; max-width: 1300px; width: 100%; 
+        }
+
+        /* Painéis */
+        .panel { background: var(--panel); border: 1px solid var(--border); padding: 30px; border-radius: 12px; }
+
+        /* Header */
+        .header { grid-column: span 2; border-bottom: 2px solid var(--accent); padding-bottom: 20px; }
+        .header h1 { margin: 0; color: var(--accent); font-size: 2.8em; }
+
+        /* Blocos de Dados */
+        .section-header { color: var(--accent); font-weight: bold; margin-bottom: 15px; text-transform: uppercase; display: flex; align-items: center; gap: 10px; }
+        .tech-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 20px; }
+        .tech-item h4 { color: var(--accent); margin: 0 0 10px 0; font-size: 0.9em; }
+
+        /* Projetos */
+        .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 20px; }
+        .project-card { border: 1px solid var(--border); padding: 20px; border-radius: 8px; background: #1c2630; }
+        .project-card h4 { margin-top: 0; color: var(--accent); }
+
+        /* Sidebar */
+        .sidebar { text-align: center; }
+        .profile-img { width: 180px; height: 180px; border-radius: 50%; border: 4px solid var(--accent); object-fit: cover; margin-bottom: 20px; }
+        .contact-list { text-align: left; margin: 20px 0; padding: 0; list-style: none; }
+        .contact-list li { margin-bottom: 10px; }
+
+        @media (max-width: 1024px) { .dashboard { grid-template-columns: 1fr; } .header { grid-column: span 1; } }
     </style>
 </head>
 <body>
 
-<div class="main-grid">
-    <!-- Header: conforme ChatGPT Image 30 de jun. de 2026, 14_51_43.jpg -->
-    <header class="header" style="grid-column: span 2;">
+<div class="dashboard">
+    <header class="header">
         <h1>IZABELA FRAGA REIS</h1>
-        <p>DATA & BUSINESS ANALYST</p>
+        <h3>DATA & BUSINESS ANALYST</h3>
         <p>POWER BI | SQL | PYTHON | DAX | ETL</p>
     </header>
 
-    <!-- Conteúdo Principal -->
     <main>
-        <section class="card">
+        <section class="panel">
             <h3>Hi there! I'm Izabela Fraga Reis 👋</h3>
             <p>Data & Business Analyst passionate about transforming data into strategic decisions.</p>
-            <p>I'm a Data Analyst with experience in Business Intelligence, Data Analytics and Process Automation...</p>
+            <p>I'm a Data Analyst with experience in Business Intelligence, Data Analytics and Process Automation. My work focuses on designing end-to-end analytical solutions—from data collection and ETL processes to interactive dashboards that support business decision-making.</p>
         </section>
 
-        <!-- Tech Stack: conforme layout do arquivo -->
-        <section class="card" style="margin-top: 20px;">
-            <div class="section-title">TECH STACK</div>
+        <section class="panel" style="margin-top:25px;">
+            <div class="section-header"><i class="fas fa-microchip"></i> TECH STACK</div>
             <div class="tech-grid">
-                <div><strong>DATA ANALYTICS</strong><br>Power BI, DAX, SQL, Python, Pandas, Excel, Looker Studio</div>
-                <div><strong>DATA ENGINEERING</strong><br>ETL, Data Modeling, AWS, Google Cloud, Google Analytics, Microsoft Clarity</div>
-                <div><strong>BUSINESS</strong><br>KPI Design, Financial Modeling, Market Analysis, Business Cases, Executive Reporting</div>
-                <div><strong>ENGINEERING</strong><br>AspenPlus, HSC Chemistry, USIM PAC</div>
+                <div class="tech-item"><h4>DATA ANALYTICS</h4>Power BI, DAX, SQL, Python, Pandas, Excel, Looker</div>
+                <div class="tech-item"><h4>DATA ENGINEERING</h4>ETL, Modeling, AWS, Google Cloud, Analytics, Clarity</div>
+                <div class="tech-item"><h4>BUSINESS</h4>KPI Design, Financial Modeling, Market Analysis, Cases</div>
+                <div class="tech-item"><h4>ENGINEERING</h4>AspenPlus, HSC Chemistry, USIM PAC</div>
             </div>
         </section>
 
-        <!-- Projetos: conforme layout do arquivo -->
-        <section class="card" style="margin-top: 20px;">
-            <div class="section-title">FEATURED PROJECTS</div>
+        <section class="panel" style="margin-top:25px;">
+            <div class="section-header"><i class="fas fa-folder-open"></i> FEATURED PROJECTS</div>
             <div class="projects-grid">
-                <div class="card">Commercial Sales Dashboard</div>
-                <div class="card">Financial Performance Dashboard</div>
-                <div class="card">Supply Chain Dashboard</div>
+                <div class="project-card"><h4>Commercial Sales</h4><small>Sales performance analysis and customer insights.</small></div>
+                <div class="project-card"><h4>Financial Performance</h4><small>Financial analysis with P&L, revenue breakdown.</small></div>
+                <div class="project-card"><h4>Supply Chain</h4><small>Logistics and inventory analysis for decisions.</small></div>
             </div>
         </section>
     </main>
 
-    <!-- Sidebar: conforme layout do arquivo -->
-    <aside class="card">
-        <img src="perfil.jpg" class="profile-img" alt="Izabela Fraga Reis">
-        <div style="text-align: center;">
-            <h3>Izabela Fraga Reis</h3>
-            <p>Data & Business Analyst</p>
-        </div>
-        <div class="sidebar-item">Vandœuvre-lès-Nancy, France</div>
-        <div class="sidebar-item">izabelarfraga@gmail.com</div>
-        <div class="sidebar-item">+49 0163 8508230 | +33 7 49 35 61 85</div>
-        <hr>
-        <div class="section-title">LANGUAGES</div>
-        <div class="sidebar-item">Portuguese (Native)</div>
-        <div class="sidebar-item">English (C1)</div>
-        <div class="sidebar-item">French (C1)</div>
-        <div class="sidebar-item">German (C1)</div>
-        <div class="sidebar-item">Spanish (A2)</div>
+    <aside class="panel sidebar">
+        <img src="perfil.jpg" alt="Izabela" class="profile-img">
+        <h2>Izabela Fraga Reis</h2>
+        <ul class="contact-list">
+            <li><i class="fas fa-map-marker-alt"></i> Vandœuvre-lès-Nancy, France</li>
+            <li><i class="fas fa-envelope"></i> izabelarfraga@gmail.com</li>
+            <li><i class="fas fa-phone"></i> +49 0163 8508230</li>
+        </ul>
+        <hr style="border-color:var(--border)">
+        <h3>LANGUAGES</h3>
+        <p>🇧🇷 Portuguese (Native)<br>🇬🇧 English (C1)<br>🇫🇷 French (C1)<br>🇩🇪 German (C1)<br>🇪🇸 Spanish (A2)</p>
     </aside>
 </div>
 
