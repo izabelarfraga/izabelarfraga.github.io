@@ -1,58 +1,83 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Izabela Fraga Reis | Portfolio</title>
     <style>
-        :root { --bg: #0b1216; --card: #141c21; --accent: #00d4ff; --text: #d1d5db; }
-        body { background-color: var(--bg); color: var(--text); font-family: sans-serif; margin: 0; padding: 20px; }
-        .wrapper { display: flex; gap: 20px; max-width: 1200px; margin: auto; }
-        .main { flex: 3; }
-        .sidebar { flex: 1; background: var(--card); padding: 20px; border-radius: 8px; border: 1px solid #2d3748; }
-        .banner { background: #000; padding: 30px; margin-bottom: 20px; border-bottom: 2px solid var(--accent); }
-        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
-        .project-card { background: var(--card); padding: 15px; border-radius: 8px; border: 1px solid #2d3748; }
-        img { border-radius: 50%; width: 150px; margin-bottom: 10px; }
+        /* Estilos base para replicar o layout de ChatGPT Image 30 de jun. de 2026, 14_51_43.jpg */
+        body { background-color: #0c1117; color: #e6edf3; font-family: sans-serif; margin: 0; padding: 20px; }
+        .header { border-bottom: 1px solid #30363d; padding-bottom: 20px; margin-bottom: 20px; }
+        .main-grid { display: grid; grid-template-columns: 1fr 300px; gap: 20px; max-width: 1200px; margin: auto; }
+        .section-title { color: #58a6ff; font-size: 0.9em; margin-bottom: 15px; display: flex; align-items: center; }
+        .card { background: #0d1117; border: 1px solid #30363d; padding: 20px; border-radius: 8px; }
+        
+        /* Layout de colunas para Tech Stack */
+        .tech-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        
+        /* Layout de Projetos */
+        .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+        
+        /* Sidebar e perfil */
+        .profile-img { width: 120px; border-radius: 50%; display: block; margin: 0 auto 15px; }
+        .sidebar-item { margin-bottom: 15px; font-size: 0.9em; }
     </style>
 </head>
 <body>
 
-<div class="banner">
-    <h1>IZABELA FRAGA REIS</h1>
-    <p>DATA & BUSINESS ANALYST</p>
-    <p>POWER BI | SQL | PYTHON | DAX | ETL</p>
-</div>
+<div class="main-grid">
+    <!-- Header: conforme ChatGPT Image 30 de jun. de 2026, 14_51_43.jpg -->
+    <header class="header" style="grid-column: span 2;">
+        <h1>IZABELA FRAGA REIS</h1>
+        <p>DATA & BUSINESS ANALYST</p>
+        <p>POWER BI | SQL | PYTHON | DAX | ETL</p>
+    </header>
 
-<div class="wrapper">
-    <section class="main">
-        <h2>Hi there! I'm Izabela Fraga Reis 👋</h2>
-        <p>Data & Business Analyst passionate about transforming data into strategic decisions.</p>
-        
-        <h3>🛠 TECH STACK</h3>
-        <div class="card-grid">
-            <div class="project-card"><h4>Data Analytics</h4><p>Power BI, SQL, Python</p></div>
-            <div class="project-card"><h4>Data Engineering</h4><p>ETL, Cloud, Google Analytics</p></div>
-            <div class="project-card"><h4>Business</h4><p>KPI Design, Modeling</p></div>
+    <!-- Conteúdo Principal -->
+    <main>
+        <section class="card">
+            <h3>Hi there! I'm Izabela Fraga Reis 👋</h3>
+            <p>Data & Business Analyst passionate about transforming data into strategic decisions.</p>
+            <p>I'm a Data Analyst with experience in Business Intelligence, Data Analytics and Process Automation...</p>
+        </section>
+
+        <!-- Tech Stack: conforme layout do arquivo -->
+        <section class="card" style="margin-top: 20px;">
+            <div class="section-title">TECH STACK</div>
+            <div class="tech-grid">
+                <div><strong>DATA ANALYTICS</strong><br>Power BI, DAX, SQL, Python, Pandas, Excel, Looker Studio</div>
+                <div><strong>DATA ENGINEERING</strong><br>ETL, Data Modeling, AWS, Google Cloud, Google Analytics, Microsoft Clarity</div>
+                <div><strong>BUSINESS</strong><br>KPI Design, Financial Modeling, Market Analysis, Business Cases, Executive Reporting</div>
+                <div><strong>ENGINEERING</strong><br>AspenPlus, HSC Chemistry, USIM PAC</div>
+            </div>
+        </section>
+
+        <!-- Projetos: conforme layout do arquivo -->
+        <section class="card" style="margin-top: 20px;">
+            <div class="section-title">FEATURED PROJECTS</div>
+            <div class="projects-grid">
+                <div class="card">Commercial Sales Dashboard</div>
+                <div class="card">Financial Performance Dashboard</div>
+                <div class="card">Supply Chain Dashboard</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Sidebar: conforme layout do arquivo -->
+    <aside class="card">
+        <img src="perfil.jpg" class="profile-img" alt="Izabela Fraga Reis">
+        <div style="text-align: center;">
+            <h3>Izabela Fraga Reis</h3>
+            <p>Data & Business Analyst</p>
         </div>
-
-        <h3>📂 FEATURED PROJECTS</h3>
-        <div class="card-grid">
-            <div class="project-card"><h4>Commercial Sales</h4><p>Sales performance analysis.</p></div>
-            <div class="project-card"><h4>Financial Perf</h4><p>P&L breakdown.</p></div>
-            <div class="project-card"><h4>BI Anonymizer</h4><p>Python data tool.</p></div>
-        </div>
-    </section>
-
-    <aside class="sidebar">
-        <!-- Substitua 'sua-foto.jpg' pelo link da sua foto se tiver -->
-        <img src="https://github.com/izabelarfraga/izabelarfraga.github.io/blob/4ef061253fe0cb2c1da7651932b35dea06886cd9/20240711_145217.jpg" alt="Izabela">
-        <h3>Izabela Fraga Reis</h3>
-        <p>Vandœuvre-lès-Nancy, France</p>
-        <p>📧 izabelarfraga@gmail.com</p>
+        <div class="sidebar-item">Vandœuvre-lès-Nancy, France</div>
+        <div class="sidebar-item">izabelarfraga@gmail.com</div>
+        <div class="sidebar-item">+49 0163 8508230 | +33 7 49 35 61 85</div>
         <hr>
-        <h4>LANGUAGES</h4>
-        <p>🇧🇷 Portuguese (Native)<br>🇬🇧 English (C1)<br>🇫🇷 French (C1)<br>🇩🇪 German (C1)</p>
+        <div class="section-title">LANGUAGES</div>
+        <div class="sidebar-item">Portuguese (Native)</div>
+        <div class="sidebar-item">English (C1)</div>
+        <div class="sidebar-item">French (C1)</div>
+        <div class="sidebar-item">German (C1)</div>
+        <div class="sidebar-item">Spanish (A2)</div>
     </aside>
 </div>
 
