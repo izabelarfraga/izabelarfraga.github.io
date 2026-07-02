@@ -3,154 +3,688 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Izabela Fraga Reis | Portfolio</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Portfolio - Izabela Fraga Reis</title>
+    <meta property="og:title" content="Portfolio - Izabela Fraga Reis">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="Portfolio de Izabela Fraga Reis - Data & Business Analyst">
+
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <!-- Custom Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'aurora-green': '#00ffaa',
+                        'aurora-blue': '#00aaff',
+                        'aurora-purple': '#aa00ff',
+                        'aurora-pink': '#ff00aa',
+                        'dark-bg': '#0a0e1a',
+                        'dark-card': '#1a1f2e',
+                        'dark-border': '#2a2f3e'
+                    },
+                    animation: {
+                        'aurora': 'aurora 15s ease-in-out infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s ease-in-out infinite',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'glow': 'glow 2s ease-in-out infinite'
+                    },
+                    keyframes: {
+                        aurora: {
+                            '0%, 100%': {
+                                backgroundPosition: '0% 50%',
+                                backgroundSize: '200% 200%'
+                            },
+                            '50%': {
+                                backgroundPosition: '100% 50%',
+                                backgroundSize: '200% 200%'
+                            }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' }
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' }
+                        },
+                        glow: {
+                            '0%, 100%': {
+                                boxShadow: '0 0 5px rgba(0, 255, 170, 0.5), 0 0 20px rgba(0, 255, 170, 0.3)'
+                            },
+                            '50%': {
+                                boxShadow: '0 0 20px rgba(0, 170, 255, 0.8), 0 0 40px rgba(0, 170, 255, 0.4)'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        :root {
-            --bg-color: #121212;
-            --text-color: #e0e0e0;
-            --accent-color: #8a2be2;
-            --card-bg: #1e1e1e;
-            --border-color: #333333;
+        /* Aurora gradient background */
+        .aurora-bg {
+            background: linear-gradient(-45deg, #0a0e1a, #1a0033, #002244, #001a33);
+            background-size: 400% 400%;
+            animation: aurora 15s ease infinite;
         }
 
-        body { 
-            background-color: var(--bg-color); 
-            color: var(--text-color); 
-            font-family: 'Segoe UI', sans-serif; 
-            margin: 0; 
-            padding: 30px; 
+        /* Aurora light effect overlay */
+        .aurora-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100vh;
+            background:
+                radial-gradient(ellipse at top left, rgba(0, 255, 170, 0.15) 0%, transparent 40%),
+                radial-gradient(ellipse at top right, rgba(0, 170, 255, 0.15) 0%, transparent 40%),
+                radial-gradient(ellipse at bottom left, rgba(170, 0, 255, 0.1) 0%, transparent 40%),
+                radial-gradient(ellipse at bottom right, rgba(255, 0, 170, 0.1) 0%, transparent 40%);
+            pointer-events: none;
+            opacity: 0.7;
         }
 
-        .container { 
-            max-width: 1100px; 
-            margin: auto; 
-            display: grid; 
-            grid-template-columns: 1fr 300px; 
-            gap: 20px; 
-        }
-        
-        .panel { 
-            background: var(--card-bg); 
-            padding: 25px; 
-            border-radius: 8px; 
-            border: 1px solid var(--border-color); 
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
         }
 
-        .header { 
-            grid-column: span 2; 
-            border-bottom: 2px solid var(--accent-color); 
-            padding-bottom: 20px; 
-        }
-        
-        h3 { 
-            color: var(--accent-color); 
-            text-transform: uppercase; 
-            margin-top: 0; 
-            font-size: 0.9em; 
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
         }
 
-        /* =========================
-           TECH STACK (AJUSTADO)
-        ========================= */
-
-        .tech-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            text-align: left;
+        ::-webkit-scrollbar-track {
+            background: #0a0e1a;
         }
 
-        .tech-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.85em;
-            margin-bottom: 8px;
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #00ffaa, #00aaff);
+            border-radius: 5px;
         }
 
-        .tech-item i {
-            color: var(--accent-color);
-            width: 16px;
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #00ffaa 0%, #00aaff 50%, #aa00ff 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        /* LANGUAGES ORIGINAL */
-        .lang-list { 
-            list-style: none; 
-            padding: 0; 
-            margin: 0; 
-            text-align: left; 
+        /* Card hover effect */
+        .card-hover {
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
         }
 
-        .lang-item { 
-            margin-bottom: 8px; 
-            font-size: 0.9em; 
-            display: flex; 
-            justify-content: space-between; 
+        .card-hover:hover {
+            border-color: #00ffaa;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 170, 0.2);
         }
 
-        .profile-img { 
-            width: 150px; 
-            border-radius: 50%; 
-            border: 3px solid var(--accent-color); 
-            display: block; 
-            margin: 0 auto 15px; 
+        /* Progress bar animation */
+        @keyframes progressAnimation {
+            0% { width: 0%; }
         }
-        
-        @media (max-width: 900px) { 
-            .container { grid-template-columns: 1fr; } 
-            .header { grid-column: span 1; } 
+
+        .progress-bar {
+            animation: progressAnimation 2s ease-out forwards;
         }
     </style>
 </head>
+<body class="bg-dark-bg text-gray-200 aurora-bg">
+    <!-- Aurora overlay effect -->
+    <div class="aurora-overlay"></div>
 
-<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-dark-bg/90 backdrop-blur-md border-b border-dark-border z-50">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold gradient-text">IFR</div>
+                <ul class="hidden md:flex space-x-8">
+                    <li><a href="#home" class="hover:text-aurora-green transition">Home</a></li>
+                    <li><a href="#about" class="hover:text-aurora-green transition">About me</a></li>
+                    <li><a href="#experience" class="hover:text-aurora-green transition">Experience</a></li>
+                    <li><a href="#skills" class="hover:text-aurora-green transition">Skills</a></li>
+                    <li><a href="#portfolio" class="hover:text-aurora-green transition">Portfolio</a></li>
+                    <li><a href="#contact" class="hover:text-aurora-green transition">Contact</a></li>
+                </ul>
+                <!-- Mobile menu button -->
+                <button class="md:hidden" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            <!-- Mobile menu -->
+            <div id="mobileMenu" class="hidden md:hidden mt-4 space-y-2">
+                <a href="#home" class="block py-2 hover:text-aurora-green">Home</a>
+                <a href="#about" class="block py-2 hover:text-aurora-green">About</a>
+                <a href="#experience" class="block py-2 hover:text-aurora-green">Experience</a>
+                <a href="#skills" class="block py-2 hover:text-aurora-green">Skills</a>
+                <a href="#portfolio" class="block py-2 hover:text-aurora-green">Portfolio</a>
+                <a href="#contact" class="block py-2 hover:text-aurora-green">Contact</a>
+            </div>
+        </div>
+    </nav>
 
-<div class="container">
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center justify-center pt-20 relative">
+        <div class="container mx-auto px-6 text-center z-10">
+            <div class="animate-slide-up">
+                <h1 class="text-5xl md:text-7xl font-bold mb-4">
+                    Hello, I'm <span class="gradient-text">Izabela Fraga Reis</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-400 mb-8">DATA & BUSINESS ANALYST</p>
+                <p class="text-lg text-gray-500 max-w-2xl mx-auto mb-12">
+                    Power BI | SQL | PYTHON | DAX | ETL
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#portfolio" class="px-8 py-3 bg-gradient-to-r from-aurora-green to-aurora-blue rounded-full text-dark-bg font-semibold hover:shadow-lg hover:shadow-aurora-green/50 transition transform hover:scale-105">
+                        View My Work
+                    </a>
+                    <a href="resume.pdf" class="px-8 py-3 border-2 border-aurora-green rounded-full hover:bg-aurora-green hover:text-dark-bg transition transform hover:scale-105">
+                        Download CV
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- Animated particles -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute w-2 h-2 bg-aurora-green rounded-full animate-float" style="top: 20%; left: 10%;"></div>
+            <div class="absolute w-2 h-2 bg-aurora-blue rounded-full animate-float" style="top: 60%; left: 80%; animation-delay: 1s;"></div>
+            <div class="absolute w-2 h-2 bg-aurora-purple rounded-full animate-float" style="top: 40%; left: 60%; animation-delay: 2s;"></div>
+            <div class="absolute w-2 h-2 bg-aurora-pink rounded-full animate-float" style="top: 80%; left: 30%; animation-delay: 3s;"></div>
+        </div>
+    </section>
 
-    <header class="header">
-        <h1>IZABELA FRAGA REIS</h1>
-        <p>DATA & BUSINESS ANALYST</p>
-    </header>
+    <!-- About Section -->
+    <section id="about" class="py-20 relative">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">About Me</h2>
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <p class="text-gray-400 leading-relaxed">
+                        Data & Business Analyst passionate about transforming data into strategic decisions.
+                    </p>
+                    <p class="text-gray-400 leading-relaxed">
+                        I'm a Data Analyst with 3 years experience in Business Intelligence, Data Analytics 
+			and Process Automation. My work focuses on designing end-to-end analytical solutions, 
+			from data collection and ETL processes to interactive dashboards that support business
+			 decision-making.
+                    </p>
+                    <p class="text-gray-400 leading-relaxed">
+			Currently, I work remotely as a Business & Data Analyst while pursuing an international 
+			Master's degree in Georesources Engineering across France, Belgium and Germany.
+                </div>
+                <div class="relative">
+                    <div class="w-80 h-80 mx-auto rounded-full bg-gradient-to-br from-aurora-green via-aurora-blue to-aurora-purple p-1">
+		    	<div class="w-full h-full rounded-full bg-dark-bg overflow-hidden">
+    			    <img
+        			src="20240711_145217.jpg"
+        			alt="Izabela Fraga Reis"
+        			class="w-full h-full object-cover rounded-full">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <main>
-        <div class="panel">
-            <h3>About Me</h3>
-            <p>
-                Data & Business Analyst passionate about transforming data into strategic decisions. 
-                Experienced in BI, Analytics, and Process Automation.
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-dark-card/30">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Work Experience</h2>
+            <div class="max-w-4xl mx-auto space-y-8">
+
+                <div class="relative pl-8 border-l-2 border-aurora-green">
+                    <div class="absolute -left-2 top-0 w-4 h-4 bg-aurora-green rounded-full"></div>
+                    <div class="bg-dark-card p-6 rounded-lg card-hover">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-semibold text-aurora-green">Business & Data Analyst</h3>
+                            <span class="text-sm text-gray-400">Sep 2025 - Present</span>
+                        </div>
+                        <p class="text-gray-300 font-medium mb-2">IEBT Innovation • Remote (Brazil)</p>
+                        <p class="text-gray-400">
+                            Designed and developed Power BI dashboards for strategic decision-making, centralized
+                            multi-source data (AWS, Google Cloud, Google Analytics, Microsoft Clarity) using SQL and DAX,
+                            automated internal workflows with JavaScript, built financial models for investment projects,
+                            and presented analytical reports to stakeholders.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative pl-8 border-l-2 border-aurora-blue">
+                    <div class="absolute -left-2 top-0 w-4 h-4 bg-aurora-blue rounded-full"></div>
+                    <div class="bg-dark-card p-6 rounded-lg card-hover">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-semibold text-aurora-blue">Business & Data Analyst Trainee</h3>
+                            <span class="text-sm text-gray-400">Sep 2023 - Aug 2025</span>
+                         </div>
+                        <p class="text-gray-300 font-medium mb-2">IEBT Innovation • Remote (Brazil)</p>
+                        <p class="text-gray-400">
+                            Developed automation scripts with Google Apps Script (JavaScript), integrated data from
+                            multiple sources into Google Sheets, created strategic dashboards in Google Looker Studio,
+                            and performed market research, financial analysis, and feasibility studies for innovation projects.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="relative pl-8 border-l-2 border-aurora-purple">
+                    <div class="absolute -left-2 top-0 w-4 h-4 bg-aurora-purple rounded-full"></div>
+                    <div class="bg-dark-card p-6 rounded-lg card-hover">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-semibold text-aurora-purple">Research Intern</h3>
+                            <span class="text-sm text-gray-400">Mar 2026 - Present</span>
+                        </div>
+                        <p class="text-gray-300 font-medium mb-2">GeoRessources Laboratory – University of Lorraine (France)</p>
+                        <p class="text-gray-400">
+                            Conduct research in collaboration with ArcelorMittal on circular economy solutions for iron ore
+                            tailings. Perform laboratory experiments, analyze experimental data using Python and JMP,
+                            and optimize mineral processing through statistical analysis.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20">
+        <div class="container mx-auto px-6">
+
+            <h2 class="text-4xl font-bold text-center mb-4 gradient-text">
+                Tech Stack
+            </h2>
+
+            <p class="text-center text-gray-400 mb-14">
+                Technologies, business expertise and international background.
+            </p>
+
+            <div class="max-w-7xl mx-auto">
+                <div class="bg-dark-card/60 backdrop-blur-md rounded-2xl border border-dark-border p-10">
+
+                    <div class="grid xl:grid-cols-5 md:grid-cols-2 gap-10">
+
+                        <!-- DATA ANALYTICS -->
+                        <div class="xl:border-r border-dark-border pr-6">
+
+                            <h3 class="text-xl font-semibold text-aurora-green mb-6 uppercase">
+                                <i class="fas fa-chart-column mr-2"></i>
+                                Data Analytics
+                            </h3>
+
+                            <ul class="space-y-3 text-gray-300">
+
+                                <li class="flex items-center gap-3">
+                                    <img src="https://cdn.simpleicons.org/powerbi/F2C811" width="22">
+                                    Power BI
+                                </li>
+
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-calculator text-aurora-blue"></i>
+                                    DAX
+                                </li>
+
+                                <li class="flex items-center gap-3">
+                                    <img src="https://cdn.simpleicons.org/mysql" width="22">
+                                    SQL
+                                </li>
+
+                                <li class="flex items-center gap-3">
+                                    <img src="https://cdn.simpleicons.org/python" width="22">
+                                    Python
+                                </li>
+
+                                <li class="flex items-center gap-3">
+                                    <img src="https://cdn.simpleicons.org/pandas" width="22">
+                                    Pandas
+                                </li>
+
+                                <li class="flex items-center gap-3">
+                                    <img src="https://cdn.simpleicons.org/microsoftexcel" width="22">
+                                    Excel
+                                </li>
+
+                                <li class="flex items-center gap-3">
+                                    <img src="https://cdn.simpleicons.org/googleanalytics" width="22">
+                                    Google Looker Studio
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                        <!-- DATA ENGINEERING -->
+                        <div class="xl:border-r border-dark-border pr-6">
+
+                            <h3 class="text-xl font-semibold text-aurora-blue mb-6 uppercase">
+                                <i class="fas fa-database mr-2"></i>
+                                Data Engineering
+                            </h3>
+
+                            <ul class="space-y-3 text-gray-300">
+
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-gears text-aurora-green"></i>
+                                    ETL
+                                </li>
+
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-diagram-project text-aurora-blue"></i>
+                                    Data Modeling
+                                </li>
+
+                                <li class="flex items-center gap-3">
+                                    <img src="https://cdn.simpleicons.org/amazonaws" width="22">
+                                    AWS
+                                </li>
+
+                                <li class="flex items-center gap-3">
+                                    <img src="https://cdn.simpleicons.org/googlecloud" width="22">
+                                    Google Cloud
+                                </li>
+
+                                <li class="flex items-center gap-3">
+                                    <img src="https://cdn.simpleicons.org/googleanalytics" width="22">
+                                    Google Analytics
+                                </li>
+
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-chart-area text-aurora-blue"></i>
+                                    Microsoft Clarity
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                        <!-- BUSINESS -->
+                        <div class="xl:border-r border-dark-border pr-6">
+
+                            <h3 class="text-xl font-semibold text-aurora-purple mb-6 uppercase">
+                                <i class="fas fa-briefcase mr-2"></i>
+                                Business
+                            </h3>
+
+                            <ul class="space-y-3 text-gray-300">
+
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-chart-line text-aurora-green"></i>
+                                    KPI Design
+                                </li>
+
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-coins text-aurora-blue"></i>
+                                    Financial Modeling
+                                </li>
+
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-magnifying-glass-chart text-aurora-purple"></i>
+                                    Market Analysis
+                                </li>
+
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-lightbulb text-aurora-pink"></i>
+                                    Business Cases
+                                </li>
+
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-file-lines text-aurora-green"></i>
+                                    Executive Reporting
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                        <!-- ENGINEERING -->
+                        <div class="xl:border-r border-dark-border pr-6">
+
+                            <h3 class="text-xl font-semibold text-aurora-pink mb-6 uppercase">
+                                <i class="fas fa-flask mr-2"></i>
+                                Engineering
+                            </h3>
+
+                            <ul class="space-y-3 text-gray-300">
+
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-industry text-aurora-green"></i>
+                                    Aspen Plus
+                                </li>
+
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-atom text-aurora-blue"></i>
+                                    HSC Chemistry
+                                </li>
+
+                                <li class="flex items-center gap-3">
+                                    <i class="fas fa-cube text-aurora-purple"></i>
+                                    USIM PAC
+                                </li>
+
+                            </ul>
+
+                        </div>
+
+                        <!-- LANGUAGES -->
+                        <div>
+
+                            <h3 class="text-xl font-semibold text-aurora-green mb-6 uppercase">
+                                <i class="fas fa-earth-europe mr-2"></i>
+                                Languages
+                            </h3>
+
+                            <ul class="space-y-3 text-gray-300">
+
+                                <li>🇧🇷 Portuguese <span class="text-gray-500">(Native)</span></li>
+
+                                <li>🇬🇧 English <span class="text-gray-500">(C1)</span></li>
+
+                                <li>🇫🇷 French <span class="text-gray-500">(C1)</span></li>
+
+                                <li>🇩🇪 German <span class="text-gray-500">(C1)</span></li>
+
+                                <li>🇪🇸 Spanish <span class="text-gray-500">(A2)</span></li>
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="py-20">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Portfolio</h2>
+            <div class="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+                <div class="bg-dark-card rounded-lg overflow-hidden card-hover group">
+                    <div class="h-48 bg-gradient-to-br from-aurora-green to-aurora-blue flex items-center justify-center">
+                        <i class="fas fa-shopping-cart text-6xl text-dark-bg"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">E-Commerce Platform</h3>
+                        <p class="text-gray-400 mb-4">Full-stack e-commerce solution with payment integration</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-aurora-green/20 text-aurora-green rounded text-xs">React</span>
+                            <span class="px-2 py-1 bg-aurora-blue/20 text-aurora-blue rounded text-xs">Node.js</span>
+                            <span class="px-2 py-1 bg-aurora-purple/20 text-aurora-purple rounded text-xs">MongoDB</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-aurora-green hover:text-aurora-blue transition">
+                                <i class="fas fa-external-link-alt"></i> Live
+                            </a>
+                            <a href="#" class="text-aurora-green hover:text-aurora-blue transition">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-dark-card rounded-lg overflow-hidden card-hover group">
+                    <div class="h-48 bg-gradient-to-br from-aurora-blue to-aurora-purple flex items-center justify-center">
+                        <i class="fas fa-users text-6xl text-dark-bg"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Social Media Dashboard</h3>
+                        <p class="text-gray-400 mb-4">Analytics dashboard for social media management</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-aurora-green/20 text-aurora-green rounded text-xs">Vue.js</span>
+                            <span class="px-2 py-1 bg-aurora-blue/20 text-aurora-blue rounded text-xs">Python</span>
+                            <span class="px-2 py-1 bg-aurora-purple/20 text-aurora-purple rounded text-xs">PostgreSQL</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-aurora-green hover:text-aurora-blue transition">
+                                <i class="fas fa-external-link-alt"></i> Live
+                            </a>
+                            <a href="#" class="text-aurora-green hover:text-aurora-blue transition">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-dark-card rounded-lg overflow-hidden card-hover group">
+                    <div class="h-48 bg-gradient-to-br from-aurora-purple to-aurora-pink flex items-center justify-center">
+                        <i class="fas fa-gamepad text-6xl text-dark-bg"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-2">Gaming Platform</h3>
+                        <p class="text-gray-400 mb-4">Real-time multiplayer gaming platform</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-aurora-green/20 text-aurora-green rounded text-xs">Next.js</span>
+                            <span class="px-2 py-1 bg-aurora-blue/20 text-aurora-blue rounded text-xs">Socket.io</span>
+                            <span class="px-2 py-1 bg-aurora-purple/20 text-aurora-purple rounded text-xs">Redis</span>
+                        </div>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-aurora-green hover:text-aurora-blue transition">
+                                <i class="fas fa-external-link-alt"></i> Live
+                            </a>
+                            <a href="#" class="text-aurora-green hover:text-aurora-blue transition">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+       <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-dark-card/30">
+        <div class="container mx-auto px-6">
+
+            <h2 class="text-4xl font-bold text-center mb-4 gradient-text">
+                Get In Touch
+            </h2>
+
+
+            <div class="flex flex-col md:flex-row justify-center items-center gap-10">
+
+                <!-- Email -->
+                <div class="flex items-center space-x-4 bg-dark-card border border-dark-border rounded-xl px-8 py-6 card-hover">
+
+                    <div class="w-14 h-14 rounded-full bg-gradient-to-br from-aurora-green to-aurora-blue flex items-center justify-center">
+                        <i class="fas fa-envelope text-dark-bg text-xl"></i>
+                    </div>
+
+                    <div>
+                        <p class="text-gray-400 text-sm">Email</p>
+                        <a href="mailto:izabelarfraga@gmail.com"
+                           class="text-white hover:text-aurora-green transition">
+                            izabelarfraga@gmail.com
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- Location -->
+                <div class="flex items-center space-x-4 bg-dark-card border border-dark-border rounded-xl px-8 py-6 card-hover">
+
+                    <div class="w-14 h-14 rounded-full bg-gradient-to-br from-aurora-purple to-aurora-pink flex items-center justify-center">
+                        <i class="fas fa-location-dot text-dark-bg text-xl"></i>
+                    </div>
+
+                    <div>
+                        <p class="text-gray-400 text-sm">Location</p>
+                        <p>Nancy, France</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="py-8 border-t border-dark-border">
+            </div>
+            <p class="text-gray-400">
             </p>
         </div>
+    </footer>
 
-        <div class="panel" style="margin-top: 20px;">
-            <h3>Tech Stack</h3>
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
 
-            <ul class="tech-list">
-                <li class="tech-item"><i class="fas fa-chart-line"></i> Power BI</li>
-                <li class="tech-item"><i class="fas fa-database"></i> SQL</li>
-                <li class="tech-item"><i class="fab fa-python"></i> Python</li>
-                <li class="tech-item"><i class="fas fa-cogs"></i> ETL</li>
-                <li class="tech-item"><i class="fas fa-cloud"></i> AWS</li>
-                <li class="tech-item"><i class="fas fa-code"></i> Data Modeling</li>
-            </ul>
-        </div>
-    </main>
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobileMenu').classList.add('hidden');
+            });
+        });
 
-    <aside class="panel">
-        <img src="foto.jpg" class="profile-img" alt="Izabela">
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
 
-        <h3>Languages</h3>
-        <ul class="lang-list">
-            <li class="lang-item"><span>Portuguese</span> <span>Native</span></li>
-            <li class="lang-item"><span>English</span> <span>C1</span></li>
-            <li class="lang-item"><span>French</span> <span>C1</span></li>
-            <li class="lang-item"><span>German</span> <span>C1</span></li>
-            <li class="lang-item"><span>Spanish</span> <span>A2</span></li>
-        </ul>
-    </aside>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-slide-up');
+                }
+            });
+        }, observerOptions);
 
-</div>
+        // Observe sections for animation
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
 
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
